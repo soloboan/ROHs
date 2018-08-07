@@ -34,7 +34,7 @@ roh_binary <- function(rohsummary,mapfile,animlist,chrNumber,outputname){
   Nanimrohs <- length(animrohs)
   
   ### printing info  
-  iterchecks.anim <- round(Nanimrohs/5,digits=0)
+  #iterchecks.anim <- round(Nanimrohs/5,digits=0)
   
   #### start filling the matrix with 1's represent 
   ## presence of a ROH for a region
@@ -50,9 +50,8 @@ roh_binary <- function(rohsummary,mapfile,animlist,chrNumber,outputname){
       snp2 <-which(colnames(ROH_binary)==roh_anim[m,"SNP2"])
       ROH_binary[rownameanim,snp1:snp2] <- 1
     }
-    if(i %% iterchecks.anim==0){
-      cat(paste("...",i,"... out of ",Nanimrohs,
-                     " (total animals ==",nanim,") with ROHs ...",sep=""),"\n")}
+    #if(i %% iterchecks.anim==0){cat(paste("...",i,"... out of ",Nanimrohs," (total animals ==",nanim,") with ROHs ...",sep=""),"\n")}
+    cat(paste("...",i,"... out of ",Nanimrohs," (total animals ==",nanim,") with ROHs ...",sep=""),"\r")
   }
   cat('... writing out binray ROH file ...\n')
   write.table(ROH_binary,paste(outputname,"_chr",chrNumber,"_binary.roh",sep=''),
